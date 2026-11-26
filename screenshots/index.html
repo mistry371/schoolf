@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CampusOS · Complete CRM Screenshot Gallery</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      font-family: 'DM Sans', sans-serif;
+      background: #0f172a;
+      color: #f1f5f9;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { padding: 32px 24px; }
+    header {
+      max-width: 1400px;
+      margin: 0 auto 36px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      border-bottom: 1px solid #334155;
+      padding-bottom: 24px;
+    }
+    h1 {
+      font: 800 28px Manrope, sans-serif;
+      letter-spacing: -0.5px;
+      color: #fff;
+    }
+    p.sub {
+      color: #94a3b8;
+      font-size: 14px;
+      margin-top: 6px;
+    }
+    .badge {
+      background: #3b82f6;
+      color: #fff;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 13px;
+    }
+    .gallery {
+      max-width: 1400px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+      gap: 24px;
+    }
+    .card {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: #60a5fa;
+    }
+    .img-wrap {
+      background: #000;
+      position: relative;
+      overflow: hidden;
+    }
+    .img-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.2s;
+    }
+    .card:hover .img-wrap img {
+      transform: scale(1.02);
+    }
+    .card-info {
+      padding: 16px;
+    }
+    .card-info h3 {
+      font-size: 14px;
+      color: #e2e8f0;
+      margin-bottom: 4px;
+    }
+    .card-info p {
+      font-size: 12px;
+      color: #94a3b8;
+    }
+    a.view-btn {
+      display: inline-block;
+      margin-top: 10px;
+      color: #60a5fa;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    a.view-btn:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>CampusOS · School CRM Feature Screenshots</h1>
+      <p class="sub">71 comprehensive high-resolution screenshots covering every function, drawer, view, filter, modal, and responsive viewport.</p>
+    </div>
+    <div class="badge">71 Screenshots</div>
+  </header>
+  <div class="gallery" id="gallery"></div>
+
+  <script>
+    const items = [
+      ["01_overview_admin_dashboard.png", "Overview · Admin Dashboard", "Default school leadership perspective with operational KPIs, trends, priorities, and events"],
+      ["02_overview_principal_focus.png", "Overview · Principal Focus", "Academic leadership perspective highlighting student outcomes and curriculum tracking"],
+      ["03_overview_admissions_focus.png", "Overview · Admissions Focus", "Enquiry management, parent follow-ups, and conversion pipeline"],
+      ["04_overview_teacher_focus.png", "Overview · Teacher Focus", "Class attendance exceptions, assignments, and practicals"],
+      ["05_overview_finance_focus.png", "Overview · Finance Focus", "Fee collections, overdue invoice accounts, and balance tracking"],
+      ["06_overview_add_task_modal.png", "Overview · Add Task Modal", "Actionable priority task creator for administrative staff"],
+      ["07_topbar_notifications_drawer.png", "Topbar · School Notifications", "Live alerts for overdue fees, admissions follow-ups, and open tickets"],
+      ["08_topbar_global_search_matches.png", "Topbar · Global Search Dropdown", "Instant unified search across students, leads, staff, fees, and tickets"],
+      ["09_admissions_pipeline_kanban.png", "Admissions · Pipeline Kanban", "Drag-and-drop style stage tracking from New enquiry to Admitted"],
+      ["10_admissions_list_table.png", "Admissions · List Directory", "Tabular admissions directory with contact details and stage badges"],
+      ["11_admissions_filter_new_enquiry.png", "Admissions · Filtered: New Enquiry", "Fresh enquiries awaiting initial response"],
+      ["12_admissions_filter_contacted.png", "Admissions · Filtered: Contacted", "Prospective parents contacted by admissions counselors"],
+      ["13_admissions_filter_school_visit.png", "Admissions · Filtered: School Visit", "Scheduled campus walkthroughs"],
+      ["14_admissions_filter_application.png", "Admissions · Filtered: Application", "Formal applications under review"],
+      ["15_admissions_filter_admitted.png", "Admissions · Filtered: Admitted", "Admitted students ready for enrollment"],
+      ["16_admissions_lead_detail_drawer.png", "Admissions · Lead Details Drawer", "Complete prospective student dossier with stage progression dropdown"],
+      ["17_admissions_lead_admitted_enrol_ready.png", "Admissions · Enrol as Student Action", "One-click lead conversion into registered student"],
+      ["18_admissions_create_enquiry_form.png", "Admissions · Create Enquiry Form", "New admission lead entry drawer with smart defaults"],
+      ["19_students_all_directory.png", "Students · All Directory", "Comprehensive student directory with class, attendance, and balances"],
+      ["20_students_filter_active.png", "Students · Filtered: Active", "Active student enrollments across campuses"],
+      ["21_students_search_filter.png", "Students · Live Table Search", "Instant real-time filtering in student directory"],
+      ["22_students_profile_detail_drawer.png", "Students · Profile Drawer", "Student profile details including contact info and financial balances"],
+      ["23_students_add_student_form.png", "Students · Add Student Form", "Student registration drawer with validation"],
+      ["24_attendance_grade_8_a_register.png", "Attendance · Grade 8 A Register", "Weekly roll-call register with click-to-cycle statuses"],
+      ["25_attendance_grade_5_b_register.png", "Attendance · Grade 5 B Register", "Primary class weekly attendance register"],
+      ["26_attendance_grade_10_b_register.png", "Attendance · Grade 10 B Register", "Secondary class weekly attendance register"],
+      ["27_academics_assessments_table.png", "Academics · Assessment Schedules", "Exam schedules, max marks, and evaluating teachers"],
+      ["28_academics_filter_scheduled.png", "Academics · Filtered: Scheduled", "Upcoming unit tests and practical assessments"],
+      ["29_academics_filter_completed.png", "Academics · Filtered: Completed", "Evaluated exams with recorded results"],
+      ["30_academics_assessment_detail_drawer.png", "Academics · Assessment Details", "Assessment breakdown drawer"],
+      ["31_academics_schedule_assessment_form.png", "Academics · Schedule Assessment Form", "New exam and evaluation entry drawer"],
+      ["32_fees_invoices_table.png", "Fees · Invoice Management", "Fee collection tracking with invoiced, collected, and outstanding totals"],
+      ["33_fees_filter_overdue.png", "Fees · Filtered: Overdue", "Delinquent invoice accounts requiring collection follow-up"],
+      ["34_fees_filter_partial.png", "Fees · Filtered: Partial", "Partially settled fee accounts"],
+      ["35_fees_filter_paid.png", "Fees · Filtered: Paid", "Fully settled invoices"],
+      ["36_fees_invoice_detail_and_quickpay.png", "Fees · Invoice Details & Quick Pay", "Receipt preview, 1-click Pay Full / Pay Half, and custom payment recorder"],
+      ["37_fees_create_invoice_form.png", "Fees · Create Invoice Form", "New invoice generation drawer with student autocomplete"],
+      ["38_timetable_weekly_schedule.png", "Timetable · Weekly Grid", "Class schedule across time slots, rooms, and teachers"],
+      ["39_timetable_class_slot_modal.png", "Timetable · Class Slot Modal", "Subject and room assignment details"],
+      ["40_timetable_add_class_event_modal.png", "Timetable · Add Event Modal", "Class substitution and special event scheduler"],
+      ["41_parent_portal_family_preview.png", "Parent Portal · Family Dashboard", "Parent viewpoint showing attendance, circulars, and fee invoices"],
+      ["42_communication_circulars.png", "Communication · Announcements", "Circulars dispatched across In-app, SMS, and Email channels"],
+      ["43_communication_compose_form.png", "Communication · Compose Circular", "Announcement broadcast composition drawer"],
+      ["44_communication_message_detail.png", "Communication · Message Details", "Full message text and audience dispatch log"],
+      ["45_staff_hr_directory.png", "Staff & HR · Directory", "Faculty and administrative staff directory across departments"],
+      ["46_staff_add_member_form.png", "Staff & HR · Add Staff Form", "Faculty onboarding drawer"],
+      ["47_staff_member_detail_drawer.png", "Staff & HR · Staff Profile", "Employee contact and department dossier"],
+      ["48_transport_routes_table.png", "Transport · Route Management", "Bus route tracking, vehicles, drivers, students, and delay status"],
+      ["49_transport_add_route_form.png", "Transport · Add Route Form", "New transportation route configuration drawer"],
+      ["50_transport_route_detail_drawer.png", "Transport · Route Details", "Route status, driver phone, and vehicle registration"],
+      ["51_library_loans_table.png", "Library · Book Loans", "Book circulation tracking with issue and return dates"],
+      ["52_library_issue_book_form.png", "Library · Issue Book Form", "Library checkout drawer"],
+      ["53_library_loan_detail_drawer.png", "Library · Loan Details", "Book return status and borrower details"],
+      ["54_assets_facilities_table.png", "Assets · Facilities Tracker", "Equipment inventory, condition, and service scheduling"],
+      ["55_assets_add_asset_form.png", "Assets · Add Asset Form", "School equipment logging drawer"],
+      ["56_assets_asset_detail_drawer.png", "Assets · Asset Details", "Maintenance records and equipment condition"],
+      ["57_compliance_tracker_table.png", "Compliance · Obligations Tracker", "Regulatory, safety, and board obligations"],
+      ["58_compliance_add_obligation_form.png", "Compliance · Add Obligation Form", "New statutory obligation entry drawer"],
+      ["59_compliance_obligation_detail_drawer.png", "Compliance · Obligation Details", "Audit evidence and responsible officer assignments"],
+      ["60_helpdesk_service_tickets.png", "Helpdesk · Support Queue", "Parent and staff ticketing system"],
+      ["61_helpdesk_create_ticket_form.png", "Helpdesk · Create Ticket Form", "Service ticket submission drawer"],
+      ["62_helpdesk_ticket_detail_drawer.png", "Helpdesk · Ticket Details", "Ticket priority and workflow status updater"],
+      ["63_reports_leadership_insights.png", "Reports · Leadership Analytics", "Admission funnels, conversion rates, and financial reports"],
+      ["64_settings_school_profile.png", "Settings · School Profile", "Institution profile and demo environment options"],
+      ["65_settings_reset_confirm_modal.png", "Settings · Reset Demo Data Modal", "Sample data restoration confirmation modal"],
+      ["66_campus_main_campus_filtered.png", "Campuses · Main Campus Filtered", "Records filtered strictly for Main Campus"],
+      ["67_campus_west_campus_filtered.png", "Campuses · West Campus Filtered", "Records filtered strictly for West Campus"],
+      ["68_mobile_overview_dashboard.png", "Mobile · Overview Dashboard", "Mobile viewport (390px) responsive leadership dashboard"],
+      ["69_mobile_sidebar_navigation.png", "Mobile · Sidebar Navigation", "Sliding mobile menu for fast navigation on phone screens"],
+      ["70_mobile_admissions_pipeline.png", "Mobile · Admissions Pipeline", "Mobile Kanban horizontal scrolling pipeline"],
+      ["71_mobile_attendance_register.png", "Mobile · Attendance Register", "Mobile responsive weekly attendance register"]
+    ];
+
+    const gallery = document.getElementById('gallery');
+    items.forEach(([file, title, desc]) => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `
+        <div class="img-wrap">
+          <a href="${file}" target="_blank">
+            <img src="${file}" alt="${title}" loading="lazy">
+          </a>
+        </div>
+        <div class="card-info">
+          <h3>${title}</h3>
+          <p>${desc}</p>
+          <a class="view-btn" href="${file}" target="_blank">Open Full Image ↗</a>
+        </div>
+      `;
+      gallery.appendChild(card);
+    });
+  </script>
+</body>
+</html>
